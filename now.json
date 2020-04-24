@@ -1,11 +1,14 @@
 {
-    "version": 2,
-    "name": "myapp",
-    "routes": [
-      { "src": "/api/(.*)", "dest": "/dist/apps/api/main.js" },
-      { "handle": "filesystem" },
-      { "src": "/assets/(.*)", "dest": "/dist/apps/myapp/assets/$1"},
-      { "src": "/(.*).(js|css|ico)", "dest": "/dist/apps/myapp/$1.$2" },
-      { "src": "/(.*)", "dest": "/dist/apps/myapp/index.html" }
-    ]
-  }
+  "version": 2,
+  "builds": [
+    { "src": "/dist/apps/api/main.js", "use": "@now/node" },
+    { "src": "/dist/apps/myapp/*", "use": "@now/static" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/dist/apps/api/main.js" },
+    { "handle": "filesystem" },
+    { "src": "/assets/(.*)", "dest": "/dist/apps/myapp/assets/$1"},
+    { "src": "/(.*).(js|css|ico)", "dest": "/dist/apps/myapp/$1.$2" },
+    { "src": "/(.*)", "dest": "/dist/apps/myapp/index.html" }
+  ]
+}
